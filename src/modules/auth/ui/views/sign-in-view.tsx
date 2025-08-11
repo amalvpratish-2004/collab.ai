@@ -5,8 +5,9 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { OctagonAlertIcon } from 'lucide-react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
 
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -28,9 +29,9 @@ const formSchema = z.object({
 })
 
 export const SignInView = () => {
-    const router = useRouter();
     const [ error, setError ] = useState<string | null>(null);
     const [ pending, setPending ] = useState(false);
+    const router = useRouter();
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -47,11 +48,34 @@ export const SignInView = () => {
         authClient.signIn.email(
             {
                 email: data.email,
-                password: data.password
+                password: data.password,
+
+                callbackURL: '/',
             },
             {
                 onSuccess: () => {
+                    setPending(false);
                     router.push('/');
+                },
+                onError: ({ error }) => {
+                    setError(error.message);
+                    setPending(false);
+                }
+            }
+        );
+    };
+
+    const onSocial = (provider: "github" | "google") => {
+        setError(null);
+        setPending(true);
+
+        authClient.signIn.social(
+            {
+                provider: provider,
+                callbackURL: '/',
+            },
+            {
+                onSuccess: () => {
                     setPending(false);
                 },
                 onError: ({ error }) => {
@@ -60,7 +84,7 @@ export const SignInView = () => {
                 }
             }
         );
-    }
+    };
 
     return(
         <div className="flex flex-col gap-6 min-h-screen items-center justify-center">
@@ -136,19 +160,21 @@ export const SignInView = () => {
                                 <div className='grid grid-cols-2 gap-4'>
                                     <Button
                                         disabled={pending}
+                                        onClick={() => onSocial("google")}
                                         variant="outline"
                                         type='button'
                                         className='w-full'
                                     >
-                                        Google
+                                        <FaGoogle />
                                     </Button>
                                     <Button
                                         disabled={pending}
+                                        onClick={() => onSocial("github")}
                                         variant="outline"
                                         type='button'
                                         className='w-full'
                                     >
-                                        GitHub
+                                        <FaGithub />
                                     </Button>
                                 </div>
                                 <div className='text-center text-sm'>

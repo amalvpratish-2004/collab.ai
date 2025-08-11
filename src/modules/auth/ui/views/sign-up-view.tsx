@@ -5,8 +5,8 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { OctagonAlertIcon } from 'lucide-react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { FaGoogle, FaGithub } from 'react-icons/fa'
 
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -21,6 +21,8 @@ import {
 } from '@/components/ui/form';
 import { Alert, AlertTitle } from '@/components/ui/alert';
 import { authClient } from '@/lib/auth-client';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const formSchema = z.object({
     name: z.string().min(1,{ message: 'Name is required' }),    
@@ -34,9 +36,9 @@ const formSchema = z.object({
 });
 
 export const SignUpView = () => {
-    const router = useRouter();
     const [ error, setError ] = useState<string | null>(null);
     const [ pending, setPending ] = useState(false);
+    const router = useRouter();
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -48,7 +50,7 @@ export const SignUpView = () => {
         },
     });
 
-    const onSubmit = async(data: z.infer<typeof formSchema>) => {
+    const onSubmit = (data: z.infer<typeof formSchema>) => {
         setError(null);
         setPending(true);
 
@@ -56,11 +58,34 @@ export const SignUpView = () => {
             {
                 name: data.name,
                 email: data.email,
-                password: data.password
+                password: data.password,
+
+                callbackURL: '/',
             },
             {
                 onSuccess: () => {
+                    setPending(false);
                     router.push('/');
+                },
+                onError: ({ error }) => {
+                    setError(error.message);
+                    setPending(false);
+                }
+            }
+        );
+    };
+
+    const onSocial = (provider: "github" | "google") => {
+        setError(null);
+        setPending(true);
+
+        authClient.signIn.social(
+            {
+                provider: provider,
+                callbackURL: '/',
+            },
+            {
+                onSuccess: () => {
                     setPending(false);
                 },
                 onError: ({ error }) => {
@@ -69,7 +94,7 @@ export const SignUpView = () => {
                 }
             }
         );
-    }
+    };
 
     return(
         <div className="flex flex-col gap-6 min-h-screen items-center justify-center">
@@ -183,19 +208,21 @@ export const SignUpView = () => {
                                 <div className='grid grid-cols-2 gap-4'>
                                     <Button
                                         disabled={pending}
+                                        onClick={() => onSocial("google")}
                                         variant="outline"
                                         type='button'
                                         className='w-full'
                                     >
-                                        Google
+                                        <FaGoogle />
                                     </Button>
                                     <Button
                                         disabled={pending}
+                                        onClick={() => onSocial("github")}
                                         variant="outline"
                                         type='button'
                                         className='w-full'
                                     >
-                                        GitHub
+                                        <FaGithub />
                                     </Button>
                                 </div>
                                 <div className='text-center text-sm'>
