@@ -21,7 +21,6 @@ import {
 } from '@/components/ui/form';
 import { Alert, AlertTitle } from '@/components/ui/alert';
 import { authClient } from '@/lib/auth-client';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 const formSchema = z.object({
@@ -235,11 +234,23 @@ export const SignUpView = () => {
                         </form>
                     </Form>
 
-                    <div className="bg-radial from-green-700 to-green-900 relative hidden md:flex flex-col gap-y-4 items-center justify-center">
-                        <img src='/logo.svg' alt='Image' className="h-[92px] w-[92px]" />     
-                        <p className="text-2xl font-semibold text-white">
-                            Accentualizer.ai
-                        </p>
+                    <div className="bg-gradient-to-br from-slate-900 to-slate-800 relative hidden lg:flex flex-col gap-y-6 items-center justify-center p-8">
+                        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/50 to-slate-800/50"></div>
+                        <div className="relative z-10 flex flex-col items-center gap-y-6">
+                        <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                            <img src="/logo.svg" alt="Accentualizer.ai Logo" className="h-[92px] w-[92px]" />
+                        </div>
+                        <div className="text-center space-y-2">
+                            <h1 className="text-3xl font-bold text-white">Accentualizer.ai</h1>
+                            <p className="text-slate-300 text-lg max-w-md">
+                            Transform your communication with AI-powered accent enhancement
+                            </p>
+                        </div>
+                        </div>
+
+                        {/* Subtle decorative elements */}
+                        <div className="absolute top-20 right-20 w-32 h-32 bg-blue-500/10 rounded-full blur-xl"></div>
+                        <div className="absolute bottom-20 left-20 w-24 h-24 bg-blue-400/10 rounded-full blur-xl"></div>
                     </div>
                 </CardContent>
             </Card>
