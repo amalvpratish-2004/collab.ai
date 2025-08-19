@@ -24,7 +24,7 @@ import { Alert, AlertTitle } from '@/components/ui/alert';
 import { authClient } from '@/lib/auth-client';
 
 const formSchema = z.object({
-    email: z.email(),
+    email: z.string().email(),
     password: z.string().min(1, { message: 'Password is required' })
 })
 
