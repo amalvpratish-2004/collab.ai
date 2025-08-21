@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -145,37 +146,52 @@ export const SignInView = () => {
                                         <AlertTitle>{error}</AlertTitle>
                                     </Alert>
                                 )}
-                                <Button
-                                    disabled={pending}
-                                    type='submit'
-                                    className='w-full'
+                                <motion.div
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.8 }}
                                 >
-                                    Sign In
-                                </Button>
+                                    <Button
+                                        disabled={pending}
+                                        type='submit'
+                                        className='w-full'
+                                    >
+                                        Sign In
+                                    </Button>
+                                </motion.div>
                                 <div className='after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t'>
                                     <span className='bg-card text-muted-foreground relative z-10 px-2'>
                                         Or continue with
                                     </span>
                                 </div>
                                 <div className='grid grid-cols-2 gap-4'>
-                                    <Button
-                                        disabled={pending}
-                                        onClick={() => onSocial("google")}
-                                        variant="outline"
-                                        type='button'
-                                        className='w-full'
+                                    <motion.div
+                                        whileHover={{ scale: 1.1 }}
+                                        whileTap={{ scale: 0.8 }}
                                     >
-                                        <FaGoogle />
-                                    </Button>
-                                    <Button
-                                        disabled={pending}
-                                        onClick={() => onSocial("github")}
-                                        variant="outline"
-                                        type='button'
-                                        className='w-full'
+                                        <Button
+                                            disabled={pending}
+                                            onClick={() => onSocial("google")}
+                                            variant="outline"
+                                            type='button'
+                                            className='w-full'
+                                        >
+                                            <FaGoogle />
+                                        </Button>
+                                    </motion.div>
+                                    <motion.div
+                                        whileHover={{ scale: 1.1 }}
+                                        whileTap={{ scale: 0.8 }}
                                     >
-                                        <FaGithub />
-                                    </Button>
+                                        <Button
+                                            disabled={pending}
+                                            onClick={() => onSocial("github")}
+                                            variant="outline"
+                                            type='button'
+                                            className='w-full'
+                                        >
+                                            <FaGithub />
+                                        </Button>
+                                    </motion.div>
                                 </div>
                                 <div className='text-center text-sm'>
                                     Don&apos;t have an account? {" "}

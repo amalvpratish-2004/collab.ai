@@ -1,5 +1,6 @@
 import { useRouter } from "next/navigation"
 import { ChevronDownIcon, CreditCardIcon, LogOutIcon } from "lucide-react"
+import { motion } from "framer-motion"
 
 import { authClient } from "@/lib/auth-client"
 import {
@@ -46,6 +47,14 @@ export const DashboardUserButton = () => {
         </div>
         <ChevronDownIcon className="size-4 shrink-0" />
       </DropdownMenuTrigger>
+      <motion.div
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{
+            duration: 0.7,
+            scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
+        }}
+      >
       <DropdownMenuContent align="start" side="top" className="w-72">
         <DropdownMenuLabel>
           <div className="flex items-center gap-3">
@@ -86,6 +95,7 @@ export const DashboardUserButton = () => {
           </div>
         </DropdownMenuItem>
       </DropdownMenuContent>
+      </motion.div>
     </DropdownMenu>
   )
 }
