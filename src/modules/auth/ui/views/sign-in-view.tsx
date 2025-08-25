@@ -148,7 +148,7 @@ export const SignInView = () => {
                                 )}
                                 <motion.div
                                     whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.8 }}
+                                    whileTap={{ scale: 0.99 }}
                                 >
                                     <Button
                                         disabled={pending}
@@ -166,7 +166,7 @@ export const SignInView = () => {
                                 <div className='grid grid-cols-2 gap-4'>
                                     <motion.div
                                         whileHover={{ scale: 1.1 }}
-                                        whileTap={{ scale: 0.8 }}
+                                        whileTap={{ scale: 0.99 }}
                                     >
                                         <Button
                                             disabled={pending}
@@ -180,7 +180,7 @@ export const SignInView = () => {
                                     </motion.div>
                                     <motion.div
                                         whileHover={{ scale: 1.1 }}
-                                        whileTap={{ scale: 0.8 }}
+                                        whileTap={{ scale: 0.99 }}
                                     >
                                         <Button
                                             disabled={pending}

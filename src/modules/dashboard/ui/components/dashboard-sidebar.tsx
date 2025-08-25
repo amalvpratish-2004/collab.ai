@@ -64,7 +64,7 @@ export const DashboardSidebar = () => {
                                 <motion.div 
                                     key={item.href}
                                     whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
+                                    whileTap={{ scale: 0.99 }}
                                 >
                                     <SidebarMenuItem>
                                         <SidebarMenuButton 
@@ -98,7 +98,7 @@ export const DashboardSidebar = () => {
                                 <motion.div 
                                     key={item.href}
                                     whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
+                                    whileTap={{ scale: 0.99 }}
                                 >
                                     <SidebarMenuItem>
                                         <SidebarMenuButton 

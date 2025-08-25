@@ -30,7 +30,7 @@ export const DashboardNavbar = () => {
             <nav className="flex px-4 gap-x-2 items-center py-3 border-b bg-background">
                 <motion.div 
                     whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
+                    whileTap={{ scale: 0.99 }}
                 >
                     <Button className="size-9" variant="outline" onClick={toggleSidebar}>
                         {(state === 'collapsed' || isMobile) 
@@ -41,7 +41,7 @@ export const DashboardNavbar = () => {
                 </motion.div>
                 <motion.div 
                     whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.95 }}
+                    whileTap={{ scale: 0.99 }}
                 >
                     <Button 
                         className="h-9 w-[240px] justify-start font-normal text-muted-foreground hover:text-muted-foreground"
