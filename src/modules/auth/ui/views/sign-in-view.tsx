@@ -3,7 +3,7 @@
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { OctagonAlertIcon } from 'lucide-react';
+import { OctagonAlertIcon, ShieldCheck, Sparkles, Zap } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -88,22 +88,26 @@ export const SignInView = () => {
     };
 
     return(
-        <div className="flex flex-col gap-6 min-h-screen items-center justify-center">
-            <Card className="overflow-hidden p-0">
+        <div className="bg-muted flex flex-col gap-6 min-h-screen items-center justify-center px-4 py-10">
+            <Card className="overflow-hidden p-0 w-full max-w-5xl">
                 <CardContent className="grid p-0 md:grid-cols-2">
                     <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)} className='p-6 md:p-8'>
-                            <div className='flex flex-col gap-6 w-90'>
-                                <div className='flex flex-col items-center text-center'>
-                                    <h1 className='text-2xl font-bold'>
-                                        Welcome back!
+                        <form onSubmit={form.handleSubmit(onSubmit)} className='p-6 md:p-10'>
+                            <div className='flex flex-col gap-6'>
+                                <div className='flex items-center gap-3'>
+                                    <img src="/logo.svg" alt="Accentualizer.ai" className="h-8 w-8" />
+                                    <span className='text-xl font-semibold'>Accentualizer.ai</span>
+                                </div>
+                                <div className='flex flex-col'>
+                                    <h1 className='text-2xl md:text-3xl font-bold tracking-tight'>
+                                        Welcome back
                                     </h1>
-                                    <p className='text-muted-foreground text-balance'>
-                                        Login to your account
+                                    <p className='text-muted-foreground'>
+                                        Sign in to continue to your dashboard
                                     </p>
                                 </div>
                                 <div className='grid gap-3'>
-                                    <FormField 
+                                    <FormField
                                         control={form.control}
                                         name='email'
                                         render={({ field }) => (
@@ -122,7 +126,7 @@ export const SignInView = () => {
                                     />
                                 </div>
                                 <div className='grid gap-3'>
-                                    <FormField 
+                                    <FormField
                                         control={form.control}
                                         name='password'
                                         render={({ field }) => (
@@ -147,7 +151,7 @@ export const SignInView = () => {
                                     </Alert>
                                 )}
                                 <motion.div
-                                    whileHover={{ scale: 1.05 }}
+                                    whileHover={{ scale: 1.02 }}
                                     whileTap={{ scale: 0.99 }}
                                 >
                                     <Button
@@ -165,7 +169,7 @@ export const SignInView = () => {
                                 </div>
                                 <div className='grid grid-cols-2 gap-4'>
                                     <motion.div
-                                        whileHover={{ scale: 1.1 }}
+                                        whileHover={{ scale: 1.03 }}
                                         whileTap={{ scale: 0.99 }}
                                     >
                                         <Button
@@ -179,7 +183,7 @@ export const SignInView = () => {
                                         </Button>
                                     </motion.div>
                                     <motion.div
-                                        whileHover={{ scale: 1.1 }}
+                                        whileHover={{ scale: 1.03 }}
                                         whileTap={{ scale: 0.99 }}
                                     >
                                         <Button
@@ -203,28 +207,30 @@ export const SignInView = () => {
                         </form>
                     </Form>
 
-                    <div className="bg-gradient-to-br from-slate-900 to-slate-800 relative hidden lg:flex flex-col gap-y-6 items-center justify-center p-8">
+                    <div className="bg-gradient-to-br from-slate-900 to-slate-800 relative hidden md:flex flex-col gap-y-6 items-center justify-center p-8">
                         <div className="absolute inset-0 bg-gradient-to-br from-slate-900/50 to-slate-800/50"></div>
                         <div className="relative z-10 flex flex-col items-center gap-y-6">
-                        <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
                             <img src="/logo.svg" alt="Accentualizer.ai Logo" className="h-[92px] w-[92px]" />
-                        </div>
-                        <div className="text-center space-y-2">
-                            <h1 className="text-3xl font-bold text-white">Accentualizer.ai</h1>
-                            <p className="text-slate-300 text-lg max-w-md">
-                            Transform your communication with AI-powered accent enhancement
+                          </div>
+                          <div className="text-center space-y-2">
+                            <h2 className="text-3xl font-bold text-white">Your AI accent assistant</h2>
+                            <p className="text-slate-300 max-w-md">
+                              Professional tools for better calls and presentations.
                             </p>
+                          </div>
+                          <ul className="grid gap-3 text-slate-200">
+                            <li className="flex items-center gap-2"><ShieldCheck className="h-4 w-4"/> Secure authentication</li>
+                            <li className="flex items-center gap-2"><Sparkles className="h-4 w-4"/> Smart agent workflows</li>
+                            <li className="flex items-center gap-2"><Zap className="h-4 w-4"/> Fast performance</li>
+                          </ul>
                         </div>
-                        </div>
-
-                        {/* Subtle decorative elements */}
                         <div className="absolute top-20 right-20 w-32 h-32 bg-blue-500/10 rounded-full blur-xl"></div>
                         <div className="absolute bottom-20 left-20 w-24 h-24 bg-blue-400/10 rounded-full blur-xl"></div>
                     </div>
                 </CardContent>
             </Card>
-            <div className='text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance
-            *:[a]:underline *:[a]:underline-offset-4'>
+            <div className='text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4'>
                 By clicking continue, you agree to our <a href='#'>Terms of Service</a> and <a href='#'>Privacy Policy</a>
             </div>
         </div>
