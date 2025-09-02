@@ -1,4 +1,4 @@
-import { useRouter } from "next/navigation";
+//import { useRouter } from "next/navigation";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -35,7 +35,7 @@ export const AgentForm = ({ onSuccess, onCancel, initialValues}: AgentFormProps)
         trpc.agents.create.mutationOptions({
             onSuccess: async() => {
                 await queryClient.invalidateQueries(
-                    trpc.agents.getMany.queryOptions(),
+                    trpc.agents.getMany.queryOptions({}),
                 );
 
                 if(initialValues?.id){
