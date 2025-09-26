@@ -5,18 +5,14 @@ import { cn } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { VideoIcon, BanIcon } from "lucide-react";
+import { VideoIcon } from "lucide-react";
 
 interface Props {
   meetingId: string;
-  onCancelMeeting: () => void;
-  isCancelling: boolean;
 }
 
 export const UpcomingState = ({
-  meetingId,
-  onCancelMeeting,
-  isCancelling,
+  meetingId
 }: Props) => {
   return (
     <div className="flex items-center justify-center px-4">
@@ -47,16 +43,7 @@ export const UpcomingState = ({
 
         {/* Buttons */}
         <div className="flex flex-col-reverse lg:flex-row lg:justify-center items-center gap-7 w-full px-4">
-          <Button
-            variant="secondary"
-            className="w-full lg:w-auto"
-            onClick={onCancelMeeting}
-            disabled={isCancelling}
-          >
-            <BanIcon className="mr-2" />
-            Cancel Meeting
-          </Button>
-          <Button disabled={isCancelling} asChild className="w-full lg:w-auto">
+          <Button asChild className="w-full lg:w-auto">
             <Link href={`/call/${meetingId}`} className="flex items-center justify-center">
               <VideoIcon className="mr-2" />
               Start Meeting
