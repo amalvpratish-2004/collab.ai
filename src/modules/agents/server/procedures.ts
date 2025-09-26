@@ -3,7 +3,7 @@ import { and, count, desc, eq, getTableColumns, ilike, sql } from "drizzle-orm";
 
 import { db } from "@/db";
 import { agents } from "@/db/schema";
-import { createTRPCRouter, protectedProcedure } from "@/trpc/init";
+import { createTRPCRouter, premiumProcedure, protectedProcedure } from "@/trpc/init";
 //import { TRPCError } from "@trpc/server";
 import { agentsInsertSchema, agentsUpdateSchema } from "../schemas";
 import { DEFAULT_PAGE, DEFAULT_PAGE_SIZE, MAX_PAGE_SIZE, MIN_PAGE_SIZE } from "@/constants";
@@ -131,7 +131,7 @@ export const agentsRouter = createTRPCRouter({
         }
     ),
 
-    create: protectedProcedure
+    create: premiumProcedure('agents')
     .input(agentsInsertSchema)
     .mutation(async ({ input, ctx }) => {
         //drizzle always returns array (since sql works like that)

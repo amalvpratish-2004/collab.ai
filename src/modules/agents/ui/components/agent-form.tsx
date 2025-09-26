@@ -20,6 +20,7 @@ import {
 } from '@/components/ui/form'
 import { AgentGetOne } from "../../types";
 import { agentsInsertSchema } from "../../schemas";
+import { useRouter } from "next/navigation";
 
 interface AgentFormProps{
     onSuccess?: () => void;
@@ -30,6 +31,7 @@ interface AgentFormProps{
 export const AgentForm = ({ onSuccess, onCancel, initialValues}: AgentFormProps) => {
     const trpc = useTRPC();
     const queryClient = useQueryClient();
+    const router = useRouter();
 
     const createAgent = useMutation(
         trpc.agents.create.mutationOptions({
@@ -37,11 +39,18 @@ export const AgentForm = ({ onSuccess, onCancel, initialValues}: AgentFormProps)
                 await queryClient.invalidateQueries(
                     trpc.agents.getMany.queryOptions({}),
                 );
+                await queryClient.invalidateQueries(
+                    trpc.premium.getFreeUsage.queryOptions(),
+                );
 
                 onSuccess?.();
             },
             onError: (error) => {
                 toast.error(error.message);
+
+                if(error.data?.code === "FORBIDDEN"){
+                    router.push('/upgrade');
+                }
             },
         }),
     );

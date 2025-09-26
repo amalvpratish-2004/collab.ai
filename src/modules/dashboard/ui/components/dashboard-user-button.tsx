@@ -72,7 +72,7 @@ export const DashboardUserButton = () => {
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="cursor-pointer p-3 hover:bg-accent/50 transition-colors">
+        <DropdownMenuItem onClick={() => authClient.customer.portal()} className="cursor-pointer p-3 hover:bg-accent/50 transition-colors">
           <div className="flex items-center gap-3 flex-1">
             <div className="flex items-center justify-center w-8 h-8 rounded-md bg-blue-500/10">
               <CreditCardIcon className="size-4 text-blue-600" />
