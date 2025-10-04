@@ -31,12 +31,16 @@ It is designed to facilitate collaborations (e.g. teams, projects, shared resour
 
 ## Tech Stack
 
-- **Next.js** (React framework) :contentReference[oaicite:0]{index=0}  
+- **Next.js** (React framework)  
 - **TypeScript**  
-- CSS / PostCSS  
-- Drizzle (used as ORM / DB layer) — via `drizzle.config.ts`  
-- ESLint (linting)  
-- Vercel (preferred deployment)  
+- Tailwind CSS and shadcn for modern UI designs 
+- Drizzle (used as ORM / DB layer) — via `drizzle.config.ts`
+- Postgres DB - Neon
+- Stream sdk for real time video conferencing
+- Vercel (preferred deployment)
+- polar.sh for payment integration
+- inngest for background jobs
+- open ai platform for AI intergration
 - Others (see `package.json` for full dependencies)  
 
 ---
@@ -46,10 +50,10 @@ It is designed to facilitate collaborations (e.g. teams, projects, shared resour
 *(To be updated as features are added)*
 
 - User authentication & authorization  
-- Project / workspace creation & management  
-- Real-time collaboration or updates  
-- API routes & backend logic using Next.js backend  
-- Database models via Drizzle  
+- Meeting creation
+- Agent creation with specializations of any kind
+- Real-time collaboration or updates with the agent and other users
+- Meeting summarisation and recording features  
 - Responsive, modern UI  
 
 ---
