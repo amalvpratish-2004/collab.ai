@@ -49,12 +49,13 @@ It is designed to facilitate collaborations (e.g. teams, projects, shared resour
 
 *(To be updated as features are added)*
 
-- User authentication & authorization  
+- User authentication & authorization
+- Responsive, modern UI 
 - Meeting creation
 - Agent creation with specializations of any kind
 - Real-time collaboration or updates with the agent and other users
 - Meeting summarisation and recording features  
-- Responsive, modern UI  
+- Payment features added for unlocking more features
 
 ---
 
