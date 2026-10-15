@@ -82,7 +82,7 @@ export const SignUpView = () => {
         authClient.signIn.social(
             {
                 provider: provider,
-                callbackURL: '/',
+                callbackURL: '/meetings',
             },
             {
                 onSuccess: () => {
@@ -105,7 +105,7 @@ export const SignUpView = () => {
                             <div className='flex flex-col gap-6'>
                                 <div className='flex items-center gap-3'>
                                     <img src="/logo.svg" alt="Accentualizer.ai" className="h-8 w-8" />
-                                    <span className='text-xl font-semibold'>Accentualizer.ai</span>
+                                    <span className='text-xl font-semibold'>Collab.ai</span>
                                 </div>
                                 <div className='flex flex-col'>
                                     <h1 className='text-2xl md:text-3xl font-bold tracking-tight'>

@@ -73,7 +73,7 @@ export const SignInView = () => {
         authClient.signIn.social(
             {
                 provider: provider,
-                callbackURL: '/',
+                callbackURL: '/meetings',
             },
             {
                 onSuccess: () => {
@@ -96,7 +96,7 @@ export const SignInView = () => {
                             <div className='flex flex-col gap-6'>
                                 <div className='flex items-center gap-3'>
                                     <img src="/logo.svg" alt="Accentualizer.ai" className="h-8 w-8" />
-                                    <span className='text-xl font-semibold'>Accentualizer.ai</span>
+                                    <span className='text-xl font-semibold'>Collab.ai</span>
                                 </div>
                                 <div className='flex flex-col'>
                                     <h1 className='text-2xl md:text-3xl font-bold tracking-tight'>
@@ -214,7 +214,7 @@ export const SignInView = () => {
                             <img src="/logo.svg" alt="Accentualizer.ai Logo" className="h-[92px] w-[92px]" />
                           </div>
                           <div className="text-center space-y-2">
-                            <h2 className="text-3xl font-bold text-white">Your AI accent assistant</h2>
+                            <h2 className="text-2xl font-bold text-white">Empower your meetings with AI</h2>
                             <p className="text-slate-300 max-w-md">
                               Professional tools for better calls and presentations.
                             </p>
